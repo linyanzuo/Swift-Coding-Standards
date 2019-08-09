@@ -17,13 +17,13 @@
 
 1. 封装相应的`构造方法`和`创建对象实例的类方法`
 
-*示例:*
+**示例:**
         调用者需要了解"用户反馈"控制器所处的`Storyboard`文件及绑定的`StoryboardID`, 增加了额外的使用成本
 ```
 let feedbackVC = UIStoryboard(name: "Feedback", bundle: nil).instantiateViewController(withIdentifier: "FeedbackViewController")
 ```
 
-*建议做法:*
+**建议做法:**
         将使用`Storyboard`实例化对象的方法, 封装成类方法, 调用者只需知道"用户反馈"控制器通过`Storyboard`加载, 并不需要掌握关联的信息
 ```
 class FeedbackVC: UIViewController
