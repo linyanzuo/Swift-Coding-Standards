@@ -16,7 +16,25 @@
 但是这些的顺序并没有一个固定的形式，不同的类型、不同的文件可能会有不同的组织形式。
 **重要的是每一个文件、类型必须按照一定的逻辑来组织这些元素**, 不能简单的追加在文件的末尾. 
 
-建议使用 `// MARK:` 来为源文件中的代码进行分组注释
+> 建议使用 `// MARK:` 来为源文件中的代码进行分组注释
+
+### 删除多余的注释代码
+创建文件时, 系统会自动生成部分注释的功能方法, 若无实例使用场景, 则必须删除自动生成的注释代码
+
+**示例**
+        创建`UIViewController`时自动生成的`prepare(for:_:_)`方法, 若不需要使用该方法, 必须删除此注释代码, 保留更干净的文件
+
+```
+    /*
+    // MARK: - Navigation
+
+    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        // Get the new view controller using segue.destination.
+        // Pass the selected object to the new view controller.
+    }
+    */
+```
 
 ---
 
