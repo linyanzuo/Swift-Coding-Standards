@@ -13,7 +13,26 @@
 如果该类存在类方法, 则控制器生命周期方法写在类方法后面
 
 ## 构造方法
-> 
+> 对于外部调用者而言, 实例化对象时所需要的操作应当尽量简化
+
+1. 封装相应的`构造方法`和`创建对象实例的类方法`
+
+示例: 
+```
+let feedbackVC = UIStoryboard(name: "Feedback", bundle: nil).instantiateViewController(withIdentifier: "FeedbackViewController")
+```
+
+调用者需要了解"用户反馈"控制器所处的`Storyboard`文件及绑定的`StoryboardID`, 增加了额外的使用成本
+
+建议做法: 
+    将使用`Storyboard`实例化对象的方法, 封装成类方法, 调用者只需知道"用户反馈"控制器通过`Storyboard`加载, 并不需要掌握关联的信息
+```
+class FeedbackVC: UIViewController
+    class func storyboardInstance() -> FeedbackVC? {
+        return UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: NSStringFromClass(self.classForCoder())) as? FeedbackVC
+    }
+}
+```
 
 ## 划分规则
 **注释要求**
